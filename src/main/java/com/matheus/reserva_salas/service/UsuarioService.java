@@ -49,10 +49,19 @@ public class UsuarioService {
         usuario.setNome(usuarioRequestDTO.nome());
         usuario.setEmail(usuarioRequestDTO.email());
         usuario.setCpf(usuarioRequestDTO.cpf());
-        return new UsuarioResponseDTO(usuario.getId(), usuario.getNome(), usuario.getEmail(), usuario.getCpf());
+
+        Usuario atualizado = usuarioRepository.save(usuario);
+
+        return new UsuarioResponseDTO(atualizado.getId(), atualizado.getNome(), atualizado.getEmail(), atualizado.getCpf());
 
     }
 
+    public void deletar(Long id){
+        if(!usuarioRepository.existsById(id)){
+            throw new EntityNotFoundException("Usuario nao encontrado");
+        }
+        usuarioRepository.deleteById(id);
+    }
 
 
 }
