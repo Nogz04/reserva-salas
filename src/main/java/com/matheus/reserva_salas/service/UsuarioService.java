@@ -17,10 +17,6 @@ public class UsuarioService {
     @Autowired
     UsuarioRepository usuarioRepository;
 
-    public UsuarioService(UsuarioRepository usuarioRepository) {
-        this.usuarioRepository = usuarioRepository;
-    }
-
     //Cadastrar um novo usuário no sistema
     public UsuarioResponseDTO cadastrarUsuario(UsuarioRequestDTO usuarioRequestDTO){
         Usuario usuario = new Usuario();
